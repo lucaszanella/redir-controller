@@ -1,0 +1,29 @@
+{
+  "name": "redir-controller",
+  "version": "1.0.0",
+  "description": "Manage TCP Redir redirections in the server using secure HTTPS post requests",
+  "main": "controller.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lucaszanella/redir-controller.git"
+  },
+  "keywords": [
+    "redir",
+    "tcp",
+    "forward",
+    "controller",
+    "linux"
+  ],
+  "author": "Lucas Zanella",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lucaszanella/redir-controller/issues"
+  },
+  "homepage": "https://github.com/lucaszanella/redir-controller#readme",
+  "dependencies": {
+    "ffi": "^2.2.0"
+  }
+}

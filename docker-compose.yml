@@ -7,6 +7,6 @@ services:
      - "./socatController.js:/home/socatController.js"
      - "./token.js:/home/token.js"
     ports:
-     - "8443:8443"
+     - "8442:8442"
     restart: unless-stopped
 

@@ -5,6 +5,7 @@ const http        = require('http');
 const https       = require('https');
 const privateKey  = fs.readFileSync('server.key', 'utf8');
 const certificate = fs.readFileSync('server.crt', 'utf8');
+const tokenFile   = require('./token.js');
 const { exec }    = require('child_process');
 const credentials = {key: privateKey, cert: certificate};
 const express     = require('express');
@@ -12,7 +13,12 @@ const app         = express();
 //app.use(bodyParser.json());
 app.use(express.urlencoded());
 var   socatProcess;
-const token = '';
+const token = tokenFile.token;
+
+if (token.length()==0)
+	throw Error('Token is empty, change token.js file');
+else if (token.length() <= 12)
+	throw Error('Token is too small and can be bruteforced. Make it random and longer than 12 characters');
 
 listenOn: 8442;
 //TODO: Verify is these regex reall match only IP, nothing more

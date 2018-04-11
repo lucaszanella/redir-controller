@@ -1,1 +1,1 @@
-exports.token = ''
+exports.token = 'kjwuge**whgf&%$$#$h'

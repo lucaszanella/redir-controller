@@ -4,6 +4,7 @@
   "description": "Manage TCP Redir redirections in the server using secure HTTPS post requests",
   "main": "controller.js",
   "scripts": {
+    "install": "git clone https://github.com/troglobit/redir && cd redir && git checkout a8a67ee64257094b7f440b47c6232b9875153fa2 && gcc -shared -fpic redir.c -o libredir.so && mv libredir.so ../libredir.so && rm -rf redir",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

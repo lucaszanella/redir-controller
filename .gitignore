@@ -3,3 +3,4 @@ node_modules/
 redir
 redir.so
 redir.o
+libredir.so

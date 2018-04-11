@@ -10,10 +10,11 @@ const { exec }    = require('child_process');
 const credentials = {key: privateKey, cert: certificate};
 const express     = require('express');
 const app         = express();
+import redir, {shortStrng} from './redir';
 
 app.use(express.urlencoded());
 const token = tokenFile.token;
-var   socatProcesses = new Map();
+var   redirections = new Map();
 
 if (token.length()==0)
 	throw Error('Token is empty, change token.js file');
@@ -24,22 +25,22 @@ else if (token.length() <= 12)
 ipRegex   = /^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$/;
 portRegex = /^\d{1,5}$/;
 
-id(sourceIp, sourcePort, destinationIp, destinationPort) => sourceIp + ':' + sourcePort + '-' + destinationIp + ':' + destinationPort;
+id = (sourceIp, sourcePort, destinationIp, destinationPort) => sourceIp + ':' + sourcePort + '-' + destinationIp + ':' + destinationPort;
 
 redirect = (req, res) => {
 	const sourceIp         = req.body.sourceIp,
 	const sourcePort       = req.body.sourcePort,
 	const destinationIp    = req.body.destinationIp,
-        const destinationPort  = req.body.destinationPort;
-        const _token           = req.body.token;
+    const destinationPort  = req.body.destinationPort;
+    const _token           = req.body.token;
 
 	if (token != _token) //Authentication
 		return;
 	if (!ipRegex.test(sourceIp) || !ipRegex.test(destinationIp) || !portRegex.test(sourcePort) || !portRegex.test(destinationPort)) //Injection prevention
 		return;
-	if (socatProcesses.has())
-	socatProcess.kill();
-	socatProcess = exec(`socat tcp-listen:${sourcePort},bind=${sourceIp},reuseaddr,fork tcp:${destinationIp}:${destinationPort}`);
+	//if (socatProcesses.has())
+	//socatProcess.kill();
+	//socatProcess = exec(`socat tcp-listen:${sourcePort},bind=${sourceIp},reuseaddr,fork tcp:${destinationIp}:${destinationPort}`);
 
 	res.send(`Started socat, redirecting tcp traffic from ${sourceIp}:${sourcePort} to ${destinationIp}:${destinationPort}`)
 }

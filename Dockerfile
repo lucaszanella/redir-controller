@@ -4,4 +4,4 @@ RUN npm install -g express body-parser
 
 WORKDIR /home
 
-CMD node redir.js
+CMD node controller.js

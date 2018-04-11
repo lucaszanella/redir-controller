@@ -8,9 +8,8 @@ const certificate = fs.readFileSync('server.crt', 'utf8');
 const tokenFile   = require('./token.js');
 const { exec }    = require('child_process');
 const credentials = {key: privateKey, cert: certificate};
-const express     = require('express');
 const app         = express();
-import redir, {shortStrng} from './redir';
+const redir       = require('./redir.js');
 
 app.use(express.urlencoded());
 const token = tokenFile.token;
@@ -28,9 +27,9 @@ portRegex = /^\d{1,5}$/;
 id = (sourceIp, sourcePort, destinationIp, destinationPort) => sourceIp + ':' + sourcePort + '-' + destinationIp + ':' + destinationPort;
 
 redirect = (req, res) => {
-	const sourceIp         = req.body.sourceIp,
-	const sourcePort       = req.body.sourcePort,
-	const destinationIp    = req.body.destinationIp,
+	const sourceIp         = req.body.sourceIp;
+	const sourcePort       = req.body.sourcePort;
+	const destinationIp    = req.body.destinationIp;
     const destinationPort  = req.body.destinationPort;
     const _token           = req.body.token;
 

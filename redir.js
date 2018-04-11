@@ -35,6 +35,4 @@ const redir = ffi.Library('./libredir', {
   'server_socket'  : [ 'int' , [ 'char *', 'int', 'int' ] ],
 });
 
-export default redir;
-
-export const shortString;
+module.exports = {redir, shortString}

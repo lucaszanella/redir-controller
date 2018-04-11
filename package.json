@@ -25,6 +25,8 @@
   },
   "homepage": "https://github.com/lucaszanella/redir-controller#readme",
   "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.3",
     "ffi": "^2.2.0"
   }
 }
